@@ -1,8 +1,10 @@
 # LetterWordExercise
 
 This is ASP.NET Core Web Application with ASP.NET Razor Pages.
+
 From the letter of exercise description we can chose from winforms app or asp.net web app.
 winforms app is for windows systems only, and as.net web app is cross platform. That's why I use it.
+
 For asp.net web app we have MVC, API and Razor pages (also we have react and angular, but I wanted to realize main algoritm by c# and for front we don't need so powerfull tools).
 Razor page is giving us all what we need. However we could use MVC or API, but as for me they are for lager apps.
 
