@@ -6,5 +6,19 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <form class="mb-3" method="POST" enctype="multipart/form-data">
+        <label class="form-label">Upload File</label>
+        <input name="uploadedFile" type="file" class="form-control"><br>
+
+        <div class="input-group">
+            <select class="form-select" name="count">
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+            <button asp-page-handler="MatchFile" type="submit" class="btn btn-outline-secondary">Upload</button>
+        </div>
+    </form>
 </div>
