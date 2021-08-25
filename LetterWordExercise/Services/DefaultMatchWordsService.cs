@@ -30,21 +30,35 @@ namespace LetterWordExercise.Services
                 return "";
             }
 
-            return GetMatchedWords().ToString();
-        }
-
-        private StringBuilder GetMatchedWords()
-        {
             StringBuilder result = new StringBuilder("");
             foreach (var word in _largeWords)
             {
-                for (int i = 1; i < word.Length; i++)
+                result.Append(Match("", word, word, count));
+            }
+
+            return result.ToString();
+        }
+
+        private StringBuilder Match(string line, string word, string targetWord, int count)
+        {
+            count--;
+            StringBuilder result = new StringBuilder("");
+            for (int i = 1; i < word.Length; i++)
+            {
+                var firstPart = word.Substring(0, i);
+                var lastPart = word.Substring(firstPart.Length);
+                if (_collection.Contains(firstPart))
                 {
-                    var firstPart = word.Substring(0, i);
-                    var lastPart = word.Substring(firstPart.Length);
-                    if (_collection.Contains(firstPart) && _collection.Contains(lastPart))
+                    if (count > 1)
                     {
-                        result.AppendLine($"{firstPart}+{lastPart}={word}");
+                        result.Append(Match($"{line}{firstPart}+", lastPart, targetWord, count));
+                    }
+                    else
+                    {
+                        if (_collection.Contains(lastPart))
+                        {
+                            result.AppendLine($"{line}{firstPart}+{lastPart}={targetWord}");
+                        }
                     }
                 }
             }
